@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover the story behind TSO Collectives based in Limerick, Ireland. Meet the artisan and learn about our hand-painting and resin curing processes.">
+  <title>Our Story & Craftsmanship | TSO Collectives</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            luxury: {
+              gold: '#D4AF37',
+              'gold-light': '#F3E5AB',
+              'gold-dark': '#B8860B',
+              obsidian: '#0A0E17',
+              emerald: '#022C22',
+              slate: '#0F172A'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-[#070B13] via-[#0A111F] to-[#021F18] min-h-screen text-slate-100 selection:bg-luxury-gold selection:text-luxury-obsidian">
+
+  <!-- Floating Toast Notifications Container -->
+  <div id="toast-container" class="fixed top-24 right-6 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Header Section -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-full border border-luxury-gold/50 flex items-center justify-center bg-luxury-gold/10 group-hover:border-luxury-gold transition-colors duration-300">
+          <span class="text-luxury-gold font-serif font-bold text-lg tracking-wider">TSO</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-serif font-bold tracking-widest text-slate-100 group-hover:text-luxury-gold transition-colors duration-300">TSO-COLLECTIVES</span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-luxury-gold/80 -mt-1">Luxury Artisanal Craft</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wider uppercase text-slate-300">
+        <a href="shop.html" class="hover:text-luxury-gold transition-colors duration-300">Shop</a>
+        <a href="about.html" class="text-luxury-gold transition-colors duration-300">Our Story</a>
+        <a href="#process" class="hover:text-luxury-gold transition-colors duration-300">Craftsmanship</a>
+        <a href="contact.html" class="hover:text-luxury-gold transition-colors duration-300">Custom Orders</a>
+        <a href="contact.html" class="hover:text-luxury-gold transition-colors duration-300">Contact</a>
+      </nav>
+
+      <!-- Cart Button & Mobile Menu controls -->
+      <div class="flex items-center gap-4">
+        <!-- Cart Icon trigger -->
+        <button id="cart-drawer-btn" onclick="toggleCartDrawer(true)" class="relative p-2.5 rounded-full hover:bg-slate-800/50 transition-colors border border-transparent hover:border-slate-700/50 flex items-center justify-center" aria-label="Shopping Cart">
+          <i class="fas fa-shopping-bag text-lg text-slate-200"></i>
+          <span class="cart-count absolute -top-1.5 -right-1.5 bg-luxury-gold text-luxury-obsidian font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center hidden border border-luxury-obsidian shadow-lg">0</span>
+        </button>
+
+        <!-- Mobile Menu button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-full hover:bg-slate-800/50 transition-colors" aria-label="Toggle Navigation Menu">
+          <i class="fas fa-bars text-lg text-slate-200"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-nav" class="hidden md:hidden glass-panel border-t border-white/5 py-4 px-6 flex flex-col gap-4 text-sm font-semibold uppercase tracking-wider text-slate-300">
+      <a href="shop.html" class="hover:text-luxury-gold transition-colors py-2 border-b border-white/5 font-semibold">Shop</a>
+      <a href="about.html" class="text-luxury-gold py-2 border-b border-white/5 font-semibold">Our Story</a>
+      <a href="#process" class="hover:text-luxury-gold transition-colors py-2 border-b border-white/5 font-semibold">Craftsmanship</a>
+      <a href="contact.html" class="hover:text-luxury-gold transition-colors py-2 border-b border-white/5 font-semibold">Custom Orders</a>
+      <a href="contact.html" class="hover:text-luxury-gold transition-colors py-2 font-semibold">Contact</a>
+    </nav>
+  </header>
+
+  <main class="pt-28">
+    
+    <!-- Hero / Intro -->
+    <section class="py-16 px-6 max-w-5xl mx-auto text-center">
+      <span class="text-luxury-gold font-semibold uppercase tracking-widest text-xs">Based in Limerick, Ireland</span>
+      <h1 class="text-4xl sm:text-6xl font-serif font-bold text-slate-100 mt-3 leading-tight">Everyday Glassware<br><span class="gradient-text-gold italic font-normal">Reimagined as Luxury Art</span></h1>
+      <div class="h-1 w-24 bg-luxury-gold/50 rounded-full mx-auto mt-6 mb-8"></div>
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+        TSO Collectives was founded on a simple principle: the objects we hold and wear every day should be beautiful, inspiring, and unique. We transform ordinary glass chalices and preserve real flowers in crystal eco-resins.
+      </p>
+    </section>
+
+    <!-- Biography section -->
+    <section class="py-16 px-6 bg-slate-950/20 border-t border-white/5">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Images Left -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <div class="rounded-2xl overflow-hidden h-64 border border-white/5">
+              <img src="assets/blue_floral_vase.jpg" alt="Vase art detail" class="w-full h-full object-cover">
+            </div>
+            <div class="rounded-2xl overflow-hidden h-44 border border-white/5 bg-slate-950">
+              <img src="assets/emerald_resin_necklace.jpg" alt="Resin pendant detail" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="space-y-4 pt-8">
+            <div class="rounded-2xl overflow-hidden h-44 border border-white/5 bg-slate-950">
+              <img src="assets/glass_goblet_leaf.jpg" alt="Goblet leaf art" class="w-full h-full object-cover">
+            </div>
+            <div class="rounded-2xl overflow-hidden h-64 border border-white/5 bg-slate-950">
+              <img src="assets/resin_jewelry_earrings.jpg" alt="Forget Me Not resin earrings" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text Right -->
+        <div class="space-y-6">
+          <span class="text-luxury-gold font-semibold uppercase tracking-widest text-xs">The Artistic Vision</span>
+          <h2 class="text-3xl font-serif font-bold text-slate-100">Meet the Artisan & Founder</h2>
+          <div class="h-0.5 w-16 bg-luxury-gold/50 rounded-full"></div>
+          
+          <p class="text-slate-300 text-sm leading-relaxed font-light">
+            Welcome to my studio. I am the founder, designer, and artisan behind TSO Collectives. From my workspace in Limerick, Ireland, I dedicate hours to cleaning, detailing, painting, and baking glassware, as well as curing real floral resins.
+          </p>
+          <p class="text-slate-300 text-sm leading-relaxed font-light">
+            I believe that glassware should not be generic or mass-produced. The cups we drink from during family dinners or the jewelry we wear when stepping out should carry human warmth, time, and detail. By painting botanical motifs and preserving nature's shamrocks and wildflowers, I bring unique, functional luxury into your daily rituals.
+          </p>
+          
+          <div class="glass-panel-dark p-6 rounded-2xl border-l-4 border-l-luxury-gold mt-6">
+            <p class="text-slate-300 font-serif italic text-xs leading-relaxed">
+              "My creations are not identical twin copies. Each brushstroke, leaf contour, and floral arrangement is unique, crafted exclusively for those who cherish authentic, slow-made art."
+            </p>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-luxury-gold block mt-2 text-right">— Founder & Artisan, TSO Collectives</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Craftsmanship Timeline Process -->
+    <section id="process" class="py-24 px-6 border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-20">
+          <span class="text-luxury-gold font-semibold uppercase tracking-widest text-xs">Meticulous Handcrafting</span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-100 mt-2">The Creation Process</h2>
+          <div class="h-1 w-20 bg-luxury-gold/50 rounded-full mx-auto mt-4 mb-6"></div>
+          <p class="text-slate-400 text-sm leading-relaxed font-light">
+            Each product undergoes hours of preparation, detailing, and finish-hardening to ensure it remains a durable, timeless heirloom in your home.
+          </p>
+        </div>
+
+        <!-- Vertical/Horizontal Timeline -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative pt-4">
+          
+          <!-- Step 1 -->
+          <div class="glass-panel p-8 rounded-2xl border border-white/5 relative group hover:border-luxury-gold/30 transition-all duration-300">
+            <span class="absolute -top-6 left-6 w-12 h-12 rounded-2xl bg-gradient-to-br from-luxury-gold to-luxury-gold-dark text-luxury-obsidian flex items-center justify-center font-bold text-lg shadow-lg">01</span>
+            <div class="pt-4 mt-2">
+              <i class="fas fa-pencil-ruler text-2xl text-luxury-gold mb-4 block"></i>
+              <h3 class="font-serif font-bold text-lg text-slate-100 mb-2">Concept & Composition</h3>
+              <p class="text-slate-400 text-xs leading-relaxed font-light">
+                Developing botanical layouts inspired by the wild Irish meadows and amber sunsets. Drafting detailed placements that wrap around the complex 3D contours of crystal goblets or metallic jewelry bezels.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="glass-panel p-8 rounded-2xl border border-white/5 relative group hover:border-luxury-gold/30 transition-all duration-300">
+            <span class="absolute -top-6 left-6 w-12 h-12 rounded-2xl bg-gradient-to-br from-luxury-gold to-luxury-gold-dark text-luxury-obsidian flex items-center justify-center font-bold text-lg shadow-lg">02</span>
+            <div class="pt-4 mt-2">
+              <i class="fas fa-palette text-2xl text-luxury-gold mb-4 block"></i>
+              <h3 class="font-serif font-bold text-lg text-slate-100 mb-2">Microscopic Painting</h3>
+              <p class="text-slate-400 text-xs leading-relaxed font-light">
+                Using ultra-fine liner brushes to apply specialized Pebeo Vitrea 160 glossy glass paint. Outlining Shamrock emblems in pure gold enamels and applying vibrant floral layers with precision.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="glass-panel p-8 rounded-2xl border border-white/5 relative group hover:border-luxury-gold/30 transition-all duration-300">
+            <span class="absolute -top-6 left-6 w-12 h-12 rounded-2xl bg-gradient-to-br from-luxury-gold to-luxury-gold-dark text-luxury-obsidian flex items-center justify-center font-bold text-lg shadow-lg">03</span>
+            <div class="pt-4 mt-2">
+              <i class="fas fa-fire-alt text-2xl text-luxury-gold mb-4 block"></i>
+              <h3 class="font-serif font-bold text-lg text-slate-100 mb-2">Vitreous Heat-Curing</h3>
+              <p class="text-slate-400 text-xs leading-relaxed font-light">
+                Placing the dry, painted glassware into controlled domestic kilns. Curing them at high temperatures so the enamel layers crosslink and fuse directly with the glass surface, ensuring durability.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="glass-panel p-8 rounded-2xl border border-white/5 relative group hover:border-luxury-gold/30 transition-all duration-300">
+            <span class="absolute -top-6 left-6 w-12 h-12 rounded-2xl bg-gradient-to-br from-luxury-gold to-luxury-gold-dark text-luxury-obsidian flex items-center justify-center font-bold text-lg shadow-lg">04</span>
+            <div class="pt-4 mt-2">
+              <i class="fas fa-gem text-2xl text-luxury-gold mb-4 block"></i>
+              <h3 class="font-serif font-bold text-lg text-slate-100 mb-2">Resin Cast & Polish</h3>
+              <p class="text-slate-400 text-xs leading-relaxed font-light">
+                Pouring crystal-clear, non-yellowing eco-resin under vacuum chambers to eliminate bubbles. Pressing real dried Irish wildflowers and shamrocks, ultraviolet-chamber curing, and hand-polishing.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Material & Care details banner -->
+    <section class="py-16 px-6 bg-slate-950/20 border-t border-white/5">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        <i class="fas fa-shield-alt text-3xl text-luxury-gold"></i>
+        <h2 class="text-2xl font-serif font-bold text-slate-100">Quality Assured & Insured Shipping</h2>
+        <p class="text-slate-400 text-xs max-w-xl mx-auto leading-relaxed">
+          Glassware uses non-toxic, heat-cured Vitrea 160 paints. Jewelry uses hypoallergenic sterling silver or stainless steel bases. Everything is double-boxed with heavy bubble wrap to guarantee safe arrival at your door.
+        </p>
+        <div class="pt-4">
+          <a href="contact.html" class="btn-luxury py-3.5 px-8 rounded-xl text-xs uppercase tracking-wider font-bold inline-block">Inquire Custom Order</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="border-t border-white/5 bg-[#05070B] py-16 px-6 text-slate-500 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      
+      <!-- Footer Logo -->
+      <div class="flex flex-col space-y-4">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full border border-luxury-gold/30 flex items-center justify-center bg-luxury-gold/5">
+            <span class="text-luxury-gold font-serif font-bold text-sm tracking-wider">TSO</span>
+          </div>
+          <span class="text-base font-serif font-bold tracking-widest text-slate-200">TSO-COLLECTIVES</span>
+        </a>
+        <p class="text-slate-400 leading-relaxed font-light">
+          Curating and hand-painting luxury glassware & resin-cast jewelry from our studio in Limerick, Ireland. Transforming everyday life through luxury arts.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex items-center gap-3 pt-2 text-slate-400 text-base">
+          <a href="#" class="hover:text-luxury-gold transition-colors"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-luxury-gold transition-colors"><i class="fab fa-pinterest"></i></a>
+          <a href="#" class="hover:text-luxury-gold transition-colors"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="hover:text-luxury-gold transition-colors"><i class="fab fa-etsy"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-col space-y-4">
+        <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[11px]">Sitemap</h4>
+        <nav class="flex flex-col space-y-2 font-medium">
+          <a href="shop.html" class="hover:text-luxury-gold transition-colors">Boutique Shop</a>
+          <a href="about.html" class="hover:text-luxury-gold transition-colors">Our Story</a>
+          <a href="#process" class="hover:text-luxury-gold transition-colors">Craftsmanship</a>
+          <a href="contact.html" class="hover:text-luxury-gold transition-colors">Custom Orders</a>
+        </nav>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="flex flex-col space-y-4">
+        <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[11px]">Policies</h4>
+        <nav class="flex flex-col space-y-2 font-medium">
+          <a href="#" class="hover:text-luxury-gold transition-colors">Shipping & Insured Logistics</a>
+          <a href="#" class="hover:text-luxury-gold transition-colors">Returns & Refunds</a>
+          <a href="#" class="hover:text-luxury-gold transition-colors">Care Instructions</a>
+          <a href="#" class="hover:text-luxury-gold transition-colors">Terms of Use</a>
+        </nav>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="flex flex-col space-y-4">
+        <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[11px]">The Collector's Newsletter</h4>
+        <p class="text-slate-400 font-light leading-relaxed">
+          Subscribe to receive previews of new collections and exclusive discounts on custom commission work.
+        </p>
+        <div class="flex gap-2">
+          <input type="email" class="glass-input w-full py-2 px-3.5 rounded-lg text-xs" placeholder="email@address.com">
+          <button class="btn-luxury py-2 px-4 rounded-lg text-xs font-bold uppercase">Join</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <span>© 2026 TSO Collectives | Limerick, Ireland. All Rights Reserved. Hand-crafted with passion.</span>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-luxury-gold">Privacy Policy</a>
+        <a href="#" class="hover:text-luxury-gold">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= DRAWER & OVERLAYS ================= -->
+  
+  <!-- Shopping Cart Drawer Overlay -->
+  <div id="cart-drawer-overlay" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-[80] hidden transition-opacity duration-300"></div>
+  
+  <!-- Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-[#0A0D14] border-l border-white/10 z-[90] shadow-2xl flex flex-col justify-between translate-x-full drawer-transition">
+    
+    <!-- Header -->
+    <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i class="fas fa-shopping-bag text-luxury-gold text-lg"></i>
+        <h3 class="text-lg font-serif font-bold text-slate-100">Shopping Bag (<span class="cart-count">0</span>)</h3>
+      </div>
+      <button onclick="toggleCartDrawer(false)" class="p-2 text-slate-400 hover:text-slate-200 transition-colors" aria-label="Close Shopping Bag">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Scrollable Items List -->
+    <div id="cart-drawer-items" class="flex-grow overflow-y-auto">
+      <!-- Loaded dynamically via JS -->
+    </div>
+
+    <!-- Checkout Subtotal and Controls -->
+    <div class="p-6 border-t border-slate-800 bg-[#07090E]">
+      <div class="flex justify-between items-center mb-6">
+        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Estimated Subtotal</span>
+        <span id="cart-subtotal" class="text-2xl font-bold font-serif text-amber-400">€0.00</span>
+      </div>
+      <p class="text-[10px] text-slate-500 mb-4 leading-relaxed">
+        * Shipping rates, packaging materials and taxes calculated at checkout stage. We ship globally with insurance.
+      </p>
+      <button id="checkout-btn" class="btn-luxury w-full py-4 px-6 rounded-xl font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-3">
+        <i class="fas fa-credit-card"></i> Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- JavaScript script loading -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

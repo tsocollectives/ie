@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View handcrafted luxury detail on TSO Collectives artwork. Check options for shipping and pick up.">
+  <title>Product Details | TSO Collectives</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            luxury: {
+              gold: '#D4AF37',
+              'gold-light': '#F3E5AB',
+              'gold-dark': '#B8860B',
+              obsidian: '#0A0E17',
+              emerald: '#022C22',
+              slate: '#0F172A'
+            }
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-[#070B13] via-[#0A111F] to-[#021F18] min-h-screen text-slate-100 selection:bg-luxury-gold selection:text-luxury-obsidian font-sans">
+
+  <!-- Floating Toast Notifications Container -->
+  <div id="toast-container" class="fixed top-24 right-6 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Header Section -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-full border border-luxury-gold/50 flex items-center justify-center bg-luxury-gold/10 group-hover:border-luxury-gold transition-colors duration-300">
+          <span class="text-luxury-gold font-serif font-bold text-lg tracking-wider">TSO</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-serif font-bold tracking-widest text-slate-100 group-hover:text-luxury-gold transition-colors duration-300">TSO-COLLECTIVES</span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-luxury-gold/80 -mt-1">Luxury Artisanal Craft</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wider uppercase text-slate-300">
+        <a href="shop.html" class="hover:text-luxury-gold transition-colors duration-300">Shop</a>
+        <a href="about.html" class="hover:text-luxury-gold transition-colors duration-300">Our Story</a>
+        <a href="index.html#process" class="hover:text-luxury-gold transition-colors duration-300">Craftsmanship</a>
+        <a href="contact.html" class="hover:text-luxury-gold transition-colors duration-300">Custom Orders</a>
+        <a href="contact.html" class="hover:text-luxury-gold transition-colors duration-300">Contact</a>
+      </nav>
+
+      <!-- Cart Button & Mobile Menu controls -->
+      <div class="flex items-center gap-4">
+        <!-- Cart Icon trigger -->
+        <button id="cart-drawer-btn" onclick="toggleCartDrawer(true)" class="relative p-2.5 rounded-full hover:bg-slate-800/50 transition-colors border border-transparent hover:border-slate-700/50 flex items-center justify-center" aria-label="Shopping Cart">
+          <i class="fas fa-shopping-bag text-lg text-slate-200"></i>
+          <span class="cart-count absolute -top-1.5 -right-1.5 bg-luxury-gold text-luxury-obsidian font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center hidden border border-luxury-obsidian shadow-lg">0</span>
+        </button>
+
+        <!-- Mobile Menu button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-full hover:bg-slate-800/50 transition-colors" aria-label="Toggle Navigation Menu">
+          <i class="fas fa-bars text-lg text-slate-200"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-nav" class="hidden md:hidden glass-panel border-t border-white/5 py-4 px-6 flex flex-col gap-4 text-sm font-semibold uppercase tracking-wider text-slate-300">
+      <a href="shop.html" class="hover:text-luxury-gold transition-colors py-2 border-b border-white/5 font-semibold">Shop</a>
+      <a href="about.html" class="hover:text-luxury-gold transition-colors py-2 border-b border-white/5 font-semibold">Our Story</a>
+      <a href="index.html#process" class="hover:text-luxury-gold transition-colors py-2 border-b border-white/5 font-semibold">Craftsmanship</a>
+      <a href="contact.html" class="hover:text-luxury-gold transition-colors py-2 border-b border-white/5 font-semibold">Custom Orders</a>
+      <a href="contact.html" class="hover:text-luxury-gold transition-colors py-2 font-semibold">Contact</a>
+    </nav>
+  </header>
+
+  <main class="pt-28 pb-24">
+    <div id="product-detail-view" class="max-w-7xl mx-auto px-6">
+      
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 mb-8">
+        <a href="index.html" class="hover:text-luxury-gold transition-colors">Home</a>
+        <i class="fas fa-chevron-right text-[8px]"></i>
+        <a href="shop.html" class="hover:text-luxury-gold transition-colors">Shop</a>
+        <i class="fas fa-chevron-right text-[8px]"></i>
+        <span id="crumb-product-name" class="text-slate-300 truncate">Loading...</span>
+      </nav>
+
+      <!-- Main Layout Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left Column: Gallery -->
+        <div class="lg:col-span-6 space-y-4">
+          <!-- Main Display -->
+          <div id="main-media-display" class="w-full aspect-[4/5] bg-slate-950/80 rounded-2xl border border-white/5 overflow-hidden flex items-center justify-center relative shadow-2xl">
+            <!-- Populated via JS -->
+            <i class="fas fa-circle-notch fa-spin text-2xl text-luxury-gold"></i>
+          </div>
+          
+          <!-- Thumbnail Strip -->
+          <div id="thumbnail-strip" class="flex gap-3 overflow-x-auto py-2 scrollbar-thin">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Right Column: Details & Configuration -->
+        <div class="lg:col-span-6 space-y-8">
+          
+          <!-- Title & Rating -->
+          <div class="space-y-3">
+            <h1 id="product-title" class="text-2xl sm:text-3xl font-serif font-bold text-slate-100 leading-tight">Loading Product...</h1>
+            <div class="flex items-center gap-3">
+              <div class="flex items-center text-luxury-gold text-xs gap-0.5">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span id="product-reviews-count" class="text-xs text-slate-500 font-semibold uppercase tracking-wider"></span>
+            </div>
+            
+            <!-- Real-time Price -->
+            <div class="pt-2">
+              <span id="product-price-display" class="text-3xl font-serif font-bold text-luxury-gold">€0.00</span>
+            </div>
+          </div>
+          
+          <div class="h-px bg-slate-900"></div>
+
+          <!-- Description -->
+          <div class="space-y-2">
+            <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400">The Creation Description</h4>
+            <p id="product-desc" class="text-slate-300 text-sm leading-relaxed font-light">Loading details...</p>
+          </div>
+
+          <!-- Pricing Options Selector -->
+          <div class="space-y-4">
+            <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Select Options & Delivery</h4>
+            <div id="pricing-options-container" class="flex flex-col gap-3">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <!-- Quantity Selector & CTA -->
+          <div class="flex flex-col sm:flex-row gap-4 items-center pt-4">
+            <!-- Quantity counter -->
+            <div class="flex items-center border border-slate-800 rounded-xl overflow-hidden bg-slate-950 w-full sm:w-auto justify-between sm:justify-start">
+              <button id="qty-minus" class="py-3.5 px-5 hover:bg-slate-900 text-slate-400 text-sm transition-colors font-bold">-</button>
+              <input type="text" id="qty-input" value="1" readonly class="w-12 text-center text-xs font-bold bg-transparent text-slate-200 border-none outline-none">
+              <button id="qty-plus" class="py-3.5 px-5 hover:bg-slate-900 text-slate-400 text-sm transition-colors font-bold">+</button>
+            </div>
+            
+            <!-- Add Button -->
+            <button id="add-to-bag-btn" class="btn-luxury w-full sm:flex-grow py-4 rounded-xl font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-3">
+              <i class="fas fa-shopping-bag text-xs"></i> Add to Shopping Bag
+            </button>
+          </div>
+
+          <div class="h-px bg-slate-900"></div>
+
+          <!-- Detailed Specifications Tabs (Description list style) -->
+          <div class="space-y-6">
+            
+            <!-- Specs Table Section -->
+            <div class="space-y-3">
+              <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Specifications</h4>
+              <div class="glass-panel p-4 rounded-2xl border border-white/5">
+                <table class="w-full">
+                  <tbody id="specifications-table-body">
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Care Section -->
+            <div class="space-y-2">
+              <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400"><i class="fas fa-info-circle text-luxury-gold mr-1.5"></i>Care Instructions</h4>
+              <p id="product-care-info" class="text-slate-400 text-xs leading-relaxed font-light pl-5"></p>
+            </div>
+
+            <!-- Shipping Section -->
+            <div class="space-y-2">
+              <h4 class="text-[10px] font-bold uppercase tracking-wider text-slate-400"><i class="fas fa-truck text-luxury-gold mr-1.5"></i>Shipping & Secure Dispatch</h4>
+              <p id="product-shipping-info" class="text-slate-400 text-xs leading-relaxed font-light pl-5"></p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Related products section -->
+      <div class="mt-20 pt-16 border-t border-slate-900">
+        <h3 class="text-xl font-serif font-bold text-slate-100 mb-8 text-center sm:text-left">You May Also Appreciate</h3>
+        <div id="related-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="border-t border-white/5 bg-[#05070B] py-16 px-6 text-slate-500 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      
+      <!-- Footer Logo -->
+      <div class="flex flex-col space-y-4">
+        <a href="index.html" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full border border-luxury-gold/30 flex items-center justify-center bg-luxury-gold/5">
+            <span class="text-luxury-gold font-serif font-bold text-sm tracking-wider">TSO</span>
+          </div>
+          <span class="text-base font-serif font-bold tracking-widest text-slate-200">TSO-COLLECTIVES</span>
+        </a>
+        <p class="text-slate-400 leading-relaxed font-light">
+          Curating and hand-painting luxury glassware & resin-cast jewelry from our studio in Limerick, Ireland. Transforming everyday life through luxury arts.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex items-center gap-3 pt-2 text-slate-400 text-base">
+          <a href="#" class="hover:text-luxury-gold transition-colors"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-luxury-gold transition-colors"><i class="fab fa-pinterest"></i></a>
+          <a href="#" class="hover:text-luxury-gold transition-colors"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="hover:text-luxury-gold transition-colors"><i class="fab fa-etsy"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="flex flex-col space-y-4">
+        <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[11px]">Sitemap</h4>
+        <nav class="flex flex-col space-y-2 font-medium">
+          <a href="shop.html" class="hover:text-luxury-gold transition-colors">Boutique Shop</a>
+          <a href="about.html" class="hover:text-luxury-gold transition-colors">Our Story</a>
+          <a href="about.html#process" class="hover:text-luxury-gold transition-colors">Craftsmanship</a>
+          <a href="contact.html" class="hover:text-luxury-gold transition-colors">Custom Orders</a>
+        </nav>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="flex flex-col space-y-4">
+        <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[11px]">Policies</h4>
+        <nav class="flex flex-col space-y-2 font-medium">
+          <a href="#" class="hover:text-luxury-gold transition-colors">Shipping & Insured Logistics</a>
+          <a href="#" class="hover:text-luxury-gold transition-colors">Returns & Refunds</a>
+          <a href="#" class="hover:text-luxury-gold transition-colors">Care Instructions</a>
+          <a href="#" class="hover:text-luxury-gold transition-colors">Terms of Use</a>
+        </nav>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="flex flex-col space-y-4">
+        <h4 class="text-slate-200 font-bold uppercase tracking-wider text-[11px]">The Collector's Newsletter</h4>
+        <p class="text-slate-400 font-light leading-relaxed">
+          Subscribe to receive previews of new collections and exclusive discounts on custom commission work.
+        </p>
+        <div class="flex gap-2">
+          <input type="email" class="glass-input w-full py-2 px-3.5 rounded-lg text-xs" placeholder="email@address.com">
+          <button class="btn-luxury py-2 px-4 rounded-lg text-xs font-bold uppercase">Join</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <span>© 2026 TSO Collectives | Limerick, Ireland. All Rights Reserved. Hand-crafted with passion.</span>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-luxury-gold">Privacy Policy</a>
+        <a href="#" class="hover:text-luxury-gold">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= DRAWER & OVERLAYS ================= -->
+  
+  <!-- Shopping Cart Drawer Overlay -->
+  <div id="cart-drawer-overlay" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-[80] hidden transition-opacity duration-300"></div>
+  
+  <!-- Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-[#0A0D14] border-l border-white/10 z-[90] shadow-2xl flex flex-col justify-between translate-x-full drawer-transition">
+    
+    <!-- Header -->
+    <div class="p-6 border-b border-slate-800 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i class="fas fa-shopping-bag text-luxury-gold text-lg"></i>
+        <h3 class="text-lg font-serif font-bold text-slate-100">Shopping Bag (<span class="cart-count">0</span>)</h3>
+      </div>
+      <button onclick="toggleCartDrawer(false)" class="p-2 text-slate-400 hover:text-slate-200 transition-colors" aria-label="Close Shopping Bag">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Scrollable Items List -->
+    <div id="cart-drawer-items" class="flex-grow overflow-y-auto">
+      <!-- Loaded dynamically via JS -->
+    </div>
+
+    <!-- Checkout Subtotal and Controls -->
+    <div class="p-6 border-t border-slate-800 bg-[#07090E]">
+      <div class="flex justify-between items-center mb-6">
+        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Estimated Subtotal</span>
+        <span id="cart-subtotal" class="text-2xl font-bold font-serif text-amber-400">€0.00</span>
+      </div>
+      <p class="text-[10px] text-slate-500 mb-4 leading-relaxed">
+        * Shipping rates, packaging materials and taxes calculated at checkout stage. We ship globally with insurance.
+      </p>
+      <button id="checkout-btn" class="btn-luxury w-full py-4 px-6 rounded-xl font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-3">
+        <i class="fas fa-credit-card"></i> Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- JavaScript script loading -->
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
